@@ -1,7 +1,31 @@
+function fact(num)
+{
+    if(num<0)
+     return "Undefined";
+    var fact=1;
+    for(var i=num;i>1;i--)
+      fact*=i;
+    return fact;
+ }
+
 var calcaction=function(){
 	result=$('#result')[0]
 
 	console.log(event)
+
+	if(event.type=="keydown")
+	{
+		if(event.keyCode==8)
+		result.value=result.value.substring(0,result.value.length-1)
+
+		if(event.keyCode==27)
+		{
+		result.value=""
+		event.preventDefault();
+		}
+
+		return 
+	}	
 
 	if(event.keyCode==13)
 	{
@@ -27,6 +51,9 @@ var calcaction=function(){
 
 	if(event.keyCode==45)
 		result.value+="-"
+
+	if(event.keyCode==46)
+	result.value+="."
 
 	if(event.keyCode==47)
 		result.value+="/"
@@ -67,13 +94,36 @@ var mouseevents=function(){
 	{
 		result.value=eval(result.value)
 	}	
+	if(event.target.getAttribute('id')=="number_.")
+	{
+		result.value+="."
+	}	
+	if(event.target.getAttribute('id')=="number_log")
+	{
+		result.value=Math.log10(result.value)
+	}
 
 
+	if(event.target.getAttribute('id')=="number_delete")
+	{
+		result.value=result.value.substring(0,result.value.length-1)
+	}
+
+	if(event.target.getAttribute('id')=="number_fact")
+	{
+		result.value=fact(result.value)
+	}
 
 	if(event.target.getAttribute('id')=="number_AC")
 	{
 		result.value=""
 	}
+
+	if(event.target.getAttribute('id')=="number_root")
+	{
+		result.value=Math.sqrt(result.value)
+	}
+
 	if(event.target.getAttribute('id')=="number_%")
 	result.value+="%"
 
@@ -128,4 +178,5 @@ var mouseevents=function(){
 }
 
 window.addEventListener('mousedown',mouseevents)
+window.addEventListener('keydown',calcaction)
 window.addEventListener('keypress',calcaction)
