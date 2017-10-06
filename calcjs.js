@@ -1,27 +1,33 @@
 var calcaction=function(){
-	console.log(event);
 	result=$('#result')[0]
 
-	if(event.keyCode==8)
-	result.value+="0"
+	console.log(event)
 
 	if(event.keyCode==13)
 	{
 		result.value=eval(result.value)
 	}	
 
+	if(event.keyCode==127)
+	{
+		result.value=result.value.substring(0,result.value.length-1)
+	}
+
 	if(event.keyCode==32)
 	{
-		event.preventDefault();
 		result.value=""
+		event.preventDefault();
 	}
+
 	if(event.keyCode==37)
 	result.value+="%"
+
 	if(event.keyCode==42)
 		result.value+="*"
 
 	if(event.keyCode==45)
 		result.value+="-"
+
 	if(event.keyCode==47)
 		result.value+="/"
 
@@ -54,4 +60,72 @@ var calcaction=function(){
 
 
 }
+var mouseevents=function(){
+	console.log(event)
+	
+	if(event.target.getAttribute('id')=="number_=")
+	{
+		result.value=eval(result.value)
+	}	
+
+
+
+	if(event.target.getAttribute('id')=="number_AC")
+	{
+		result.value=""
+	}
+	if(event.target.getAttribute('id')=="number_%")
+	result.value+="%"
+
+	if(event.target.getAttribute('id')=="number_*")
+		result.value+="*"
+
+	if(event.target.getAttribute('id')=="number_-")
+		result.value+="-"
+
+	if(event.target.getAttribute('id')=="number_/")
+		result.value+="/"
+
+	if(event.target.getAttribute('id')=="number_(")
+		result.value+="("
+
+	if(event.target.getAttribute('id')=="number_)")
+		result.value+=")"
+
+	if(event.target.getAttribute('id')=="number_+")
+		result.value+="+"
+
+	if(event.target.getAttribute('id')=="number_0")
+		result.value+="0"
+
+	if(event.target.getAttribute('id')=="number_1")
+		result.value+="1"
+
+	if(event.target.getAttribute('id')=="number_2")
+		result.value+="2"
+
+	if(event.target.getAttribute('id')=="number_3")
+		result.value+="3"
+
+	if(event.target.getAttribute('id')=="number_4")
+		result.value+="4"
+
+	if(event.target.getAttribute('id')=="number_5")
+		result.value+="5"
+
+	if(event.target.getAttribute('id')=="number_6")
+		result.value+="6"
+
+	if(event.target.getAttribute('id')=="number_7")
+		result.value+="7"
+
+	if(event.target.getAttribute('id')=="number_8")
+		result.value+="8"
+
+	if(event.target.getAttribute('id')=="number_9")
+		result.value+="9"
+
+}
+
+window.addEventListener('mousedown',mouseevents)
 window.addEventListener('keypress',calcaction)
