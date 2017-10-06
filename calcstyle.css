@@ -1,0 +1,19 @@
+td{
+	 width:110;
+}
+.button{
+	height:60;
+	width:90;
+	background-color: grey;
+}
+.number{
+	height: 60;
+	width:90;
+	background-color:white;
+}
+.result{
+	width:380;
+	height: 70;
+	text-align: right;
+	font-size: 40;
+}
